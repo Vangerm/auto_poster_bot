@@ -1,4 +1,4 @@
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.types import Message
 
 
@@ -7,7 +7,6 @@ router = Router()
 
 @router.message()
 async def send_empty_message(message: Message):
-    print(message)
     if message.forward_origin and\
         message.forward_origin.type == 'channel':
         chat_id = message.forward_origin.chat.id
