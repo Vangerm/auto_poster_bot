@@ -1,0 +1,9 @@
+/venv
+venv
+.env
+.env.work
+*/__pycache__
+/.mypy_cache
+
+test*.py
+posts.json
