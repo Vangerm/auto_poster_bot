@@ -1,8 +1,9 @@
 import logging
-from aiogram import Router, F
+from aiogram import Router
 from config_data.config import load_config
 from aiogram.types import Message
-from aiogram.filters import Command, CommandStart
+from aiogram.filters import Command, CommandStart, StateFilter
+from aiogram.fsm.state import default_state
 
 
 logger = logging.getLogger(__name__)
@@ -12,7 +13,7 @@ config = load_config()
 admin_ids = config.tg_bot.admin_ids
 
 
-@router.message(CommandStart())
+@router.message(CommandStart(), StateFilter(default_state))
 async def process_start_command(message: Message):
     logger.info(f'{message.chat.username} ({message.chat.id}) - start bot')
     await message.answer('Добрый день, меня зовут VK_POSTER!\n\n'
@@ -21,45 +22,49 @@ async def process_start_command(message: Message):
                          'Напишите мне /autopost '
                          'для начала настройки автопоста.\n\n'
                          'Триал версия состовляет 1 месяц, '
-                         'для просмотра тарифов напишите /info\n\n'
+                         'для просмотра тарифов напишите /info.\n\n'
                          'Перед началом работы узнайте id группы вк '
                          '(убедитесь что она открыта), '
                          'а так же id группы тг.\n'
                          'Можете переслать сообщание из группы тг мне, а'
-                         'я подскажу (копировать id группы нужно с минусом!)')
+                         'я подскажу (копировать id группы нужно без минуса!).')
 
 
-@router.message(Command(commands='help'))
+@router.message(Command(commands='help'), StateFilter(default_state))
 async def process_help_command(message: Message):
     await message.answer('Напишите мне /autopost '
                          'для начала настройки автопоста.\n\n'
                          'Триал версия состовляет 1 месяц, '
-                         'для просмотра тарифов напишите /tariffs\n\n'
+                         'для просмотра тарифов напишите /tariffs.\n\n'
                          'Перед началом работы узнайте id группы вк '
                          '(убедитесь что она открыта), '
                          'а так же id группы тг.\n'
                          'Можете переслать сообщание из группы тг мне, а'
-                         'я подскажу (копировать id группы нужно с минусом!)'
+                         'я подскажу (копировать id группы нужно без минуса!).'
                          '\n\nВ дальнейшем наш бот будет развиваться, '
                          'будем рады обратной связи.\n\n'
                          'Напишите мне /feedback и оставте обратную связь.')
 
 
-@router.message(Command(commands='autopost'))
-async def process_autopost_command(message: Message):
-    await message.answer('Мы пока работаем над этим, ожидайте')
-
-
-@router.message(Command(commands='tariffs'))
+@router.message(Command(commands='tariffs'), StateFilter(default_state))
 async def process_tariffs_command(message: Message):
-    await message.answer('Мы пока работаем над этим, ожидайте')
+    await message.answer('Мы пока работаем над этим, ожидайте.')
 
 
-@router.message(Command(commands='feedback'))
+@router.message(Command(commands='feedback'), StateFilter(default_state))
 async def process_feedback_command(message: Message):
-    await message.answer('Мы пока работаем над этим, ожидайте')
+    await message.answer('Мы пока работаем над этим, ожидайте.')
 
 
-@router.message(Command(commands='support'))
+@router.message(Command(commands='support'), StateFilter(default_state))
 async def process_support_command(message: Message):
-    await message.answer('Мы пока работаем над этим, ожидайте')
+    await message.answer('Мы пока работаем над этим, ожидайте.')
+
+
+@router.message(Command(commands='cancel'), StateFilter(default_state))
+async def process_cancel_command(message: Message):
+    await message.answer(
+        text='Отменять нечего. Вы не настраиваете автопост.\n\n'
+             'Чтобы перейти к настройке автопоста - '
+             'отправьте команду /autopost.'
+    )

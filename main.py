@@ -2,8 +2,9 @@ import asyncio
 import logging.config
 from loger.logging_settings import logging_config
 from aiogram import Bot, Dispatcher
+from aiogram.fsm.storage.memory import MemoryStorage
 from config_data.config import load_config
-from handlers import user_handlers, other_handlers
+from handlers import user_handlers, other_handlers, bot_hendlers
 
 
 logging.config.dictConfig(logging_config)
@@ -16,16 +17,21 @@ async def main() -> None:
     # Получаем конфигурационные данные
     config = load_config()
 
+    storage = MemoryStorage()
+
     # Заполняем конфигурационными данными переменные
     telegram_bot_token = config.tg_bot.token
 
     # Активация телеграмм бота
     bot: Bot = Bot(token=telegram_bot_token)
-    dp: Dispatcher = Dispatcher()
+    dp: Dispatcher = Dispatcher(storage=storage)
 
     # подключение перехвата сообщений в личку боту
     dp.include_router(user_handlers.router)
+    dp.include_router(bot_hendlers.router)
+    #other_handlers - должен быть последним
     dp.include_router(other_handlers.router)
+
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
