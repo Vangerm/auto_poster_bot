@@ -26,12 +26,11 @@ async def main() -> None:
     bot: Bot = Bot(token=telegram_bot_token)
     dp: Dispatcher = Dispatcher(storage=storage)
 
-    # подключение перехвата сообщений в личку боту
-    dp.include_router(user_handlers.router)
+    # bot_hendler в начало, обрабатываем состояния
     dp.include_router(bot_hendlers.router)
-    #other_handlers - должен быть последним
+    dp.include_router(user_handlers.router)
+    # other_handlers - должен быть последним
     dp.include_router(other_handlers.router)
-
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)

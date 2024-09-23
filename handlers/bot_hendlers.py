@@ -1,5 +1,5 @@
 import logging
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
@@ -17,6 +17,7 @@ user_dict: dict[int, dict[int, int]] = {}
 class FSMFillForm(StatesGroup):
     fill_id_vk_group = State()
     fill_id_tg_group = State()
+
 
 @router.message(Command(commands='cancel'), ~StateFilter(default_state))
 async def process_cancel_command_state(message: Message, state: FSMContext):
