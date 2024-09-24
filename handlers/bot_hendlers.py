@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 router = Router()
 
 # Создаем "базу данных" пользователей
-user_dict: dict[int, dict[int, int]] = {}
+user_dict: dict[int, dict[str | any]] = {}
 
 
 class FSMFillForm(StatesGroup):
@@ -79,8 +79,8 @@ async def warning_not_id_tg_group(message: Message):
 async def process_showautopost_command(message: Message):
     if message.from_user.id in user_dict:
         await message.answer(
-            text=f'id_vk_group - {user_dict[message.from_user.id]['id_vk_group']}'
-            f'\n\nid_tg_group - {user_dict[message.from_user.id]['id_tg_group']}'
+            text=f'id vk - {user_dict[message.from_user.id]['id_vk_group']}'
+            f'\nid tg - {user_dict[message.from_user.id]['id_tg_group']}'
         )
     else:
         await message.answer(

@@ -2,7 +2,7 @@ import asyncio
 import logging.config
 from loger.logging_settings import logging_config
 from aiogram import Bot, Dispatcher
-from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.storage.redis import RedisStorage, Redis
 from config_data.config import load_config
 from handlers import user_handlers, other_handlers, bot_hendlers
 
@@ -17,7 +17,8 @@ async def main() -> None:
     # Получаем конфигурационные данные
     config = load_config()
 
-    storage = MemoryStorage()
+    redis = Redis(host='localhost')
+    storage = RedisStorage(redis=redis)
 
     # Заполняем конфигурационными данными переменные
     telegram_bot_token = config.tg_bot.token
