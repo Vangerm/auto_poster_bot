@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 router = Router()
 
 # Создаем "базу данных" пользователей
-user_dict: dict[int, dict[str | any]] = {}
+user_dict: dict = {}
 
 
 class FSMFillForm(StatesGroup):
@@ -30,8 +30,18 @@ async def process_cancel_command_state(message: Message, state: FSMContext):
     await state.clear()
 
 
+@router.message(Command(commands='cancel'), StateFilter(default_state))
+async def process_cancel_command(message: Message, state: FSMContext):
+    await message.answer(
+        text='Отменять нечего. Вы не настраиваете автопост.\n\n'
+        'Чтобы перейти к настройке автопоста - '
+        'отправьте команду /autopost.'
+        )
+
+
 @router.message(Command(commands='autopost'), StateFilter(default_state))
 async def process_autopost_command(message: Message, state: FSMContext):
+    logger.info(f'{message.chat.username} ({message.chat.id}) - start fill autopost')
     await message.answer(text='Пожалуйста, введите id группы vk.')
     await state.set_state(FSMFillForm.fill_id_vk_group)
 

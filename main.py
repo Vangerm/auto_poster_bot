@@ -4,7 +4,10 @@ from loger.logging_settings import logging_config
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import RedisStorage, Redis
 from config_data.config import load_config
-from handlers import user_handlers, other_handlers, bot_hendlers
+from handlers import (user_handlers,
+                      other_handlers,
+                      bot_hendlers,
+                      admin_handlers)
 
 
 logging.config.dictConfig(logging_config)
@@ -27,9 +30,12 @@ async def main() -> None:
     bot: Bot = Bot(token=telegram_bot_token)
     dp: Dispatcher = Dispatcher(storage=storage)
 
-    # bot_hendler в начало, обрабатываем состояния
-    dp.include_router(bot_hendlers.router)
+    dp['admin_ids'] = config.tg_bot.admin_ids
+
     dp.include_router(user_handlers.router)
+    dp.include_router(admin_handlers.router)
+    dp.include_router(bot_hendlers.router)
+
     # other_handlers - должен быть последним
     dp.include_router(other_handlers.router)
 
