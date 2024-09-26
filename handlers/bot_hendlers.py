@@ -41,7 +41,8 @@ async def process_cancel_command(message: Message, state: FSMContext):
 
 @router.message(Command(commands='autopost'), StateFilter(default_state))
 async def process_autopost_command(message: Message, state: FSMContext):
-    logger.info(f'{message.chat.username} ({message.chat.id}) - start fill autopost')
+    logger.info(f'{message.chat.username} ({message.chat.id}) '
+                '- start fill autopost')
     await message.answer(text='Пожалуйста, введите id группы vk.')
     await state.set_state(FSMFillForm.fill_id_vk_group)
 
