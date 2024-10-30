@@ -1,7 +1,0 @@
-main.py:18 #INFO     [2024-09-26 19:44:00,221] -__main__ - Starting bot
-dispatcher.py:527 #INFO     [2024-09-26 19:44:00,524] -aiogram.dispatcher - Start polling
-dispatcher.py:341 #INFO     [2024-09-26 19:44:00,577] -aiogram.dispatcher - Run polling for bot @vk_group_poster_bot id=7693401149 - 'VK POSTER'
-dispatcher.py:172 #INFO     [2024-09-26 19:44:01,275] -aiogram.event - Update id=243122582 is handled. Duration 202 ms by bot id=7693401149
-dispatcher.py:172 #INFO     [2024-09-26 19:44:02,532] -aiogram.event - Update id=243122583 is handled. Duration 77 ms by bot id=7693401149
-dispatcher.py:554 #INFO     [2024-09-26 19:44:28,097] -aiogram.dispatcher - Polling stopped
-dispatcher.py:359 #INFO     [2024-09-26 19:44:28,358] -aiogram.dispatcher - Polling stopped for bot @vk_group_poster_bot id=7693401149 - 'VK POSTER'

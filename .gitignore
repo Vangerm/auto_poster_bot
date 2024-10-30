@@ -7,3 +7,4 @@
 
 test*.py
 posts.json
+/loger/logs.log
