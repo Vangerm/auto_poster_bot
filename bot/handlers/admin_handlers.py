@@ -1,7 +1,7 @@
 from aiogram import Router
 from aiogram.types import Message, FSInputFile
 from aiogram.filters import Command
-from filters.filters import IsAdmin
+from bot.filters.filters import IsAdmin
 from aiogram.fsm.context import FSMContext
 
 

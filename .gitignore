@@ -2,9 +2,11 @@
 /venv
 .env
 .env.work
-*/__pycache__
-/.mypy_cache
+__pycache__
+.mypy_cache
 
 test*.py
 posts.json
 /loger/logs.log
+
+.github
