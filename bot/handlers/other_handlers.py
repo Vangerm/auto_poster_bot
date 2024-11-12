@@ -1,11 +1,12 @@
 from aiogram import Router
 from aiogram.types import Message
+# from fluentogram import TranslatorRunner
 
 
-router = Router()
+other_router = Router()
 
 
-@router.message()
+@other_router.message()
 async def send_empty_message(message: Message):
     if message.forward_origin and\
        message.forward_origin.type == 'channel':

@@ -3,14 +3,15 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command, CommandStart
+# from fluentogram import TranslatorRunner
 
 
 logger = logging.getLogger(__name__)
 
-router = Router()
+user_router = Router()
 
 
-@router.message(CommandStart())
+@user_router.message(CommandStart())
 async def process_start_command(message: Message, state: FSMContext):
     await state.clear()
     logger.info(f'{message.chat.username} ({message.chat.id}) - start bot')
@@ -30,7 +31,7 @@ async def process_start_command(message: Message, state: FSMContext):
         )
 
 
-@router.message(Command(commands='help'))
+@user_router.message(Command(commands='help'))
 async def process_help_command(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
@@ -49,7 +50,7 @@ async def process_help_command(message: Message, state: FSMContext):
         )
 
 
-@router.message(Command(commands='tariffs'))
+@user_router.message(Command(commands='tariffs'))
 async def process_tariffs_command(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
@@ -57,7 +58,7 @@ async def process_tariffs_command(message: Message, state: FSMContext):
         )
 
 
-@router.message(Command(commands='feedback'))
+@user_router.message(Command(commands='feedback'))
 async def process_feedback_command(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
@@ -65,7 +66,7 @@ async def process_feedback_command(message: Message, state: FSMContext):
         )
 
 
-@router.message(Command(commands='support'))
+@user_router.message(Command(commands='support'))
 async def process_support_command(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
@@ -73,7 +74,7 @@ async def process_support_command(message: Message, state: FSMContext):
         )
 
 
-@router.message(Command(commands='info'))
+@user_router.message(Command(commands='info'))
 async def process_info_command(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(

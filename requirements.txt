@@ -13,10 +13,12 @@ idna==3.8
 magic-filter==1.0.12
 marshmallow==3.22.0
 multidict==6.0.5
+nats-py==2.9.0
 packaging==24.1
 pydantic==2.8.2
 pydantic_core==2.20.1
 python-dotenv==1.0.1
+redis==5.0.8
 requests==2.32.3
 typing_extensions==4.12.2
 urllib3==2.2.2

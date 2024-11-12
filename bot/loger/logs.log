@@ -1,0 +1,9 @@
+__main__.py:22 #INFO     [2024-11-12 21:11:57,572] -__main__ - Starting bot
+dispatcher.py:527 #INFO     [2024-11-12 21:11:57,687] -aiogram.dispatcher - Start polling
+dispatcher.py:341 #INFO     [2024-11-12 21:11:57,794] -aiogram.dispatcher - Run polling for bot @vk_group_poster_bot id=7693401149 - 'VK POSTER'
+dispatcher.py:172 #INFO     [2024-11-12 21:11:58,087] -aiogram.event - Update id=243122618 is handled. Duration 250 ms by bot id=7693401149
+dispatcher.py:172 #INFO     [2024-11-12 21:12:02,847] -aiogram.event - Update id=243122619 is handled. Duration 125 ms by bot id=7693401149
+dispatcher.py:172 #INFO     [2024-11-12 21:12:06,203] -aiogram.event - Update id=243122620 is handled. Duration 78 ms by bot id=7693401149
+dispatcher.py:554 #INFO     [2024-11-12 21:12:12,155] -aiogram.dispatcher - Polling stopped
+__main__.py:60 #INFO     [2024-11-12 21:12:12,407] -__main__ - Connection to NATS closed
+dispatcher.py:359 #INFO     [2024-11-12 21:12:12,407] -aiogram.dispatcher - Polling stopped for bot @vk_group_poster_bot id=7693401149 - 'VK POSTER'
