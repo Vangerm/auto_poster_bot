@@ -4,7 +4,6 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import default_state, State, StatesGroup
 
 from bot.states.states import NatsFillForm
 # from fluentogram import TranslatorRunner
@@ -18,7 +17,7 @@ bot_router = Router()
 user_dict: dict = {}
 
 
-@bot_router.message(Command(commands='cancel'), ~StateFilter(default_state))
+@bot_router.message(Command(commands='cancel'), StateFilter(NatsFillForm))
 async def process_cancel_command_state(message: Message, state: FSMContext):
     await message.answer(
         text='Вы вышли из настройки автопоста.\n\n'
@@ -29,7 +28,7 @@ async def process_cancel_command_state(message: Message, state: FSMContext):
     await state.set_state()
 
 
-@bot_router.message(Command(commands='cancel'), StateFilter(default_state))
+@bot_router.message(Command(commands='cancel'))
 async def process_cancel_command(message: Message, state: FSMContext):
     await message.answer(
         text='Отменять нечего. Вы не настраиваете автопост.\n\n'
@@ -38,7 +37,7 @@ async def process_cancel_command(message: Message, state: FSMContext):
         )
 
 
-@bot_router.message(Command(commands='autopost'), StateFilter(default_state))
+@bot_router.message(Command(commands='autopost'))
 async def process_autopost_command(message: Message, state: FSMContext):
     logger.info(f'{message.chat.username} ({message.chat.id}) '
                 '- start fill autopost')
@@ -86,7 +85,7 @@ async def warning_not_id_tg_group(message: Message):
 
 
 # в дальнейшем перенести в userhandlers
-@bot_router.message(Command(commands='showautopost'), StateFilter(default_state))
+@bot_router.message(Command(commands='showautopost'))
 async def process_showautopost_command(message: Message):
     if message.from_user.id in user_dict:
         await message.answer(
