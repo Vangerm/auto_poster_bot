@@ -19,3 +19,27 @@ services:
       - ./nui/db:/db
     depends_on:
       - nats
+
+  bot:
+    image: 'vangerm/auto_post_vk:v0.1.1'
+    container_name: auto_post_vk
+    restart: 'unless-stopped'
+    env_file: './bot/.env'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # volumes:
+    #   - ./bot/loger:/loger
+    depends_on:
+      - 'nats-nui'
+
+  micro_vk_poster:
+    image: 'vangerm/micro_vk_poster:v0.1.1'
+    container_name: micro_vk_poster
+    restart: 'unless-stopped'
+    env_file: './micro_vk_poster/.env'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # volumes:
+    #   - ./micro_vk_poster/loger:/loger
+    depends_on:
+      - 'bot'

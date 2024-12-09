@@ -1,14 +1,14 @@
-.venv
-/venv
+.venv/
+venv/
 
 .env
 
-__pycache__
-.mypy_cache
+__pycache__/
+.mypy_cache/
 
-test*.py
+
 posts.json
-/loger/*.log
+*.log
 
 .github
 
@@ -16,3 +16,7 @@ nui
 /nats/data
 
 docker-compose.yml
+
+
+/test*
+test*.py
