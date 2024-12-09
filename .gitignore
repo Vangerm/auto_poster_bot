@@ -1,14 +1,18 @@
 .venv
 /venv
+
 .env
-.env.work
+
 __pycache__
 .mypy_cache
 
 test*.py
 posts.json
-/loger/logs.log
+/loger/*.log
 
 .github
 
 nui
+/nats/data
+
+docker-compose.yml

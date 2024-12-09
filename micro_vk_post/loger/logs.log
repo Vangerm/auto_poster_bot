@@ -1,0 +1,58 @@
+__main__.py:15 #INFO     [2024-12-05 22:05:52,994] -__main__ - Starting microservice
+consumer.py:59 #INFO     [2024-12-05 22:06:00,495] -microservice_vk.services.delay_service.consumer - Start check vk group - -227418517
+client.py:196 #ERROR    [2024-12-05 23:14:29,189] -nats.aio.client - nats: encountered error
+Traceback (most recent call last):
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\client.py", line 2070, in _flusher
+    await self._transport.drain()
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\transport.py", line 177, in drain
+    return await self._io_writer.drain()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+client.py:196 #ERROR    [2024-12-05 23:14:29,191] -nats.aio.client - nats: encountered error
+Traceback (most recent call last):
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\client.py", line 1442, in _attempt_reconnect
+    await self._transport.wait_closed()
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\transport.py", line 180, in wait_closed
+    return await self._io_writer.wait_closed()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 364, in wait_closed
+    await self._protocol._get_close_waiter(self)
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 402, in _loop_writing
+    self._write_fut = self._loop._proactor.send(self._sock, data)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 542, in send
+    ov.WSASend(conn.fileno(), buf, flags)
+ConnectionAbortedError: [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение
+client.py:196 #ERROR    [2024-12-05 23:38:44,808] -nats.aio.client - nats: encountered error
+Traceback (most recent call last):
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\client.py", line 2070, in _flusher
+    await self._transport.drain()
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\transport.py", line 177, in drain
+    return await self._io_writer.drain()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+client.py:196 #ERROR    [2024-12-05 23:38:44,808] -nats.aio.client - nats: encountered error
+Traceback (most recent call last):
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\client.py", line 1442, in _attempt_reconnect
+    await self._transport.wait_closed()
+  File "D:\progects\CBS_news_bot\venv\Lib\site-packages\nats\aio\transport.py", line 180, in wait_closed
+    return await self._io_writer.wait_closed()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 364, in wait_closed
+    await self._protocol._get_close_waiter(self)
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 402, in _loop_writing
+    self._write_fut = self._loop._proactor.send(self._sock, data)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anton\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 542, in send
+    ov.WSASend(conn.fileno(), buf, flags)
+ConnectionAbortedError: [WinError 10053] Программа на вашем хост-компьютере разорвала установленное подключение
+consumer.py:75 #INFO     [2024-12-05 23:39:39,843] -microservice_vk.services.delay_service.consumer - Stop check vk group
+__main__.py:41 #INFO     [2024-12-05 23:39:39,843] -__main__ - Connection to NATS closed
